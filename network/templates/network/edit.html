@@ -1,0 +1,18 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block body %}
+<h1>Edit Post</h1>
+<div id="new_post">
+{% for item in items %}
+<form method="post" action="{% url 'save_changes' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Edit Post</label>
+      <textarea name="post_body" class="form-control" id="compose-body" placeholder="Body">{{ item.body }}</textarea>
+  </div>
+<button type="submit" class="btn btn-primary">Post</button>
+</form>
+</div> 
+{% endfor %}
+<div id="posts"></div>
+{% endblock %}
